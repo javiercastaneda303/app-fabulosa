@@ -69,13 +69,13 @@ let app = new Vue({
       delete_articulo (j1){
         this.tot.splice(j1,1)
       },    
-      n_linea () {
-        const linea = {
+      n_articulo () {
+        const articulo = {
           nombre: {nombre_corto:'',nombre_largo:''},
           destino:[],
           visible: true
         }
-        this.tot.unshift(linea)
+        this.tot.unshift(articulo)
       },
       delete_n_destino (j1,j2){
         this.tot[j1].destino.splice(j2,1)
@@ -169,7 +169,7 @@ let app = new Vue({
       },
       
       n_tanda (j1) {
-        const linea = {
+        const articulo = {
           datos: {nombre_corto:'',nombre_largo:''},
           horario:['sssssssssssssssssss'],
           parada:[]
@@ -177,7 +177,7 @@ let app = new Vue({
         
         let n = j1
         console.log (`${n}`)
-        this.tot[j1].horario.splice(0,0,linea)
+        this.tot[j1].horario.splice(0,0,articulo)
       },
       n_horario (j1) {
         const hour = {
