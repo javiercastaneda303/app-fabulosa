@@ -9,6 +9,12 @@
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
     input( v-model="tot[j1].datos.nombre_corto")
     input( v-model="tot[j1].datos.nombre_largo")
+    input( v-model="tot[j1].datos.nombre")
+    input( v-model="tot[j1].datos.descripcion")
+    input( v-model="tot[j1].datos.pvp")
+    input( v-model="tot[j1].datos.p_coste")
+    input( v-model="tot[j1].datos.fabricante")
+    input( v-model="tot[j1].datos.ref_fabricante")
     button(v-on:click="n_destino(i,j1)" ) n_destino 
     .destino(v-for="(j, j2) in i.destino" v-if="tot[j1].visible")
       p ---j2:{{j2}}--{{j}}
