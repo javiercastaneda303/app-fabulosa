@@ -166,11 +166,7 @@ let app = new Vue({
           s: 0
         }
         this.tot[j1].destino[j2].horario[j3].hours.unshift(hora)
-      },
-        let n = j1
-        console.log (`${n}`)
-        this.tot[j1].horario.splice(0,0,articulo)
-      },
+      },      
       n_horario (j1) {
         const hour = {
           dias: '',
