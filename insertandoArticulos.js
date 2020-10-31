@@ -73,6 +73,7 @@ let app = new Vue({
         const articulo = {
           datos: {nombre:'nombre',descripcion:'descripcion',pvp:'pvp',p_coste:'p_coste',fabricante:'fabricante',ref_fabricante:'ref_fabicante',categoria:'categoria',imagen:'imagen',visible:'visible'},
           destino:[],
+          atributo:[],
           visible: true
         }
         this.tot.unshift(articulo)
@@ -90,7 +91,32 @@ let app = new Vue({
           horario_visible: true
         }
         this.tot[j1].destino.unshift(destino)
-      },    
+      },
+      
+      
+      
+      delete_n_atributo (j1,j2){
+        this.tot[j1].atributo.splice(j2,1)
+      },
+      n_atributo (i,j1) {
+        const atributo = {
+          nombre: "nombre",
+          valores:[],
+          valor_defecto:[],
+          visible: true
+        }
+        console.log(atributo)
+        console.log(this.tot[j1].atributo)
+        this.tot[j1].atributo.unshift(atributo)
+      },
+      
+      
+      
+      
+      
+      
+      
+      
       delete_n_parada (j1,j2,j3) {
         this.tot[j1].destino[j2].parada.splice(j3,1)
       },

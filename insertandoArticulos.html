@@ -12,11 +12,16 @@
     input( v-model="tot[j1].datos.pvp")
     input( v-model="tot[j1].datos.p_coste")
     input( v-model="tot[j1].datos.fabricante")
-    input( v-model="tot[j1].datos.descripcion")
-    
+    input( v-model="tot[j1].datos.descripcion")    
     input( v-model="tot[j1].datos.categoria")
     input( v-model="tot[j1].datos.imagen")
     input( v-model="tot[j1].datos.visible")
+    
+    button(v-on:click="n_atributo(i,j1)" ) n_atributo 
+    .atributo(v-for="(j, j2) in i.atributo" v-if="tot[j1].visible")
+      p ---j2:{{j2}}--{{j}}
+      button(v-on:click="delete_n_atributo(j1,j2)" v-if="borrar") &times delete_n_atributo
+    
     
     button(v-on:click="n_destino(i,j1)" ) n_destino 
     .destino(v-for="(j, j2) in i.destino" v-if="tot[j1].visible")
