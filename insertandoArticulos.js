@@ -167,14 +167,6 @@ let app = new Vue({
         }
         this.tot[j1].destino[j2].horario[j3].hours.unshift(hora)
       },
-      
-      n_tanda (j1) {
-        const articulo = {
-          datos: {nombre_corto:'',nombre_largo:''},
-          horario:['sssssssssssssssssss'],
-          parada:[]
-        }
-        
         let n = j1
         console.log (`${n}`)
         this.tot[j1].horario.splice(0,0,articulo)
