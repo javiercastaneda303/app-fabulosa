@@ -71,7 +71,7 @@ let app = new Vue({
       },    
       n_articulo () {
         const articulo = {
-          nombre: {nombre_corto:'',nombre_largo:''},
+          datos: {nombre_corto:'',nombre_largo:'',nombre:'ccc',descripcion:'ddd',pvp:'',p_coste:'eee',fabricante:'fff',ref_fabicante:'ggg'},
           destino:[],
           visible: true
         }
