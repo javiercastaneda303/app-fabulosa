@@ -4,7 +4,7 @@ let app = new Vue({
     data () {
       return {
         tot: [],
-        borrar: true,
+        borrar: false,
         add_n_hour_visible: true,
         fix: true,
         segundos: true,
