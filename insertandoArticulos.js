@@ -92,17 +92,14 @@ let app = new Vue({
         }
         this.tot[j1].destino.unshift(destino)
       },
-      
-      
-      
       delete_n_atributo (j1,j2){
         this.tot[j1].atributo.splice(j2,1)
       },
       n_atributo (i,j1) {
         const atributo = {
           nombre: "nombre",
-          valores:[],
-          valor_defecto:[],
+          valores:"valores",
+          valor_defecto:"valor_defecto",
           visible: true
         }
         console.log(atributo)
@@ -110,9 +107,17 @@ let app = new Vue({
         this.tot[j1].atributo.unshift(atributo)
       },
       
-      
-      
-      
+      n_atributo2 (i,j1) {
+        const atributo = {
+          nombre: "nombre2",
+          valores:"valores2",
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }
+        console.log(atributo)
+        console.log(this.tot[j1].atributo)
+        this.tot[j1].atributo.unshift(atributo)
+      },
       
       
       
