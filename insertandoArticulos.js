@@ -106,26 +106,6 @@ let app = new Vue({
         console.log(this.tot[j1].atributo)
         this.tot[j1].atributo.unshift(atributo)
       },
-      
-      color_y_talla (i,j1) {
-        const color = {
-          nombre: "color2",
-          valoresA:"valores2 colores",
-          valores_:[],
-          valor_defecto:"valor_defecto2",
-          visible: true
-        }
-        const talla = {
-          nombre: "talla2",
-          valores:"s,m,l,xl",
-          valores_:[],
-          valor_defecto:"valor_defecto2",
-          visible: true
-        }
-        this.tot[j1].atributo.unshift(color)
-        this.tot[j1].atributo.unshift(talla)        
-      },
-      
       zapatos (i,j1) {
         const color = {
           nombre: "colorZapatos",
@@ -143,7 +123,36 @@ let app = new Vue({
         this.tot[j1].atributo.unshift(talla)        
       },
       
+      color_y_talla (i,j1) {
+        const color = {
+          nombre: "color2",
+          valoresA:"valores2 colores",
+          valores:[],
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }
+        const talla = {
+          nombre: "talla2",
+          valores:"s,m,l,xl",
+          valores:[],
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }
+        this.tot[j1].atributo.unshift(color)
+        this.tot[j1].atributo.unshift(talla)        
+      },
       
+      nuevo_valor_atributo (j1,j2) {
+        const valor_atributo = {
+          valor:"valor_atributo_1",
+          valor_defecto:"false"
+        }
+        this.tot[j1].atributo[j2].valores.unshift(valor_atributo)        
+      },
+        
+        
+        
+        
       
       
       delete_n_parada (j1,j2,j3) {
