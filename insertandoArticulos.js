@@ -107,16 +107,40 @@ let app = new Vue({
         this.tot[j1].atributo.unshift(atributo)
       },
       
-      n_atributo2 (i,j1) {
-        const atributo = {
-          nombre: "nombre2",
-          valores:"valores2",
+      color_y_talla (i,j1) {
+        const color = {
+          nombre: "color2",
+          valores:"valores2 colores",
+          valores_:[],
           valor_defecto:"valor_defecto2",
           visible: true
         }
-        console.log(atributo)
-        console.log(this.tot[j1].atributo)
-        this.tot[j1].atributo.unshift(atributo)
+        const talla = {
+          nombre: "talla2",
+          valores:"s,m,l,xl",
+          valores_:[],
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }
+        this.tot[j1].atributo.unshift(color)
+        this.tot[j1].atributo.unshift(talla)        
+      },
+      
+      zapatos (i,j1) {
+        const color = {
+          nombre: "colorZapatos",
+          valores:"",
+          valor_defecto:"valor por defecto",
+          visible: true
+        }
+        const talla = {
+          nombre: "tallaZapatos",
+          valores:"35,36,37,38,39,40,41,42,43,44,45",
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }
+        this.tot[j1].atributo.unshift(color)
+        this.tot[j1].atributo.unshift(talla)        
       },
       
       
