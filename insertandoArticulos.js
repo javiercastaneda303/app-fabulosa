@@ -98,7 +98,7 @@ let app = new Vue({
       n_atributo (i,j1) {
         const atributo = {
           nombre: "nombre",
-          valores:"valores",
+          valoresA:"valores",
           valor_defecto:"valor_defecto",
           visible: true
         }
@@ -110,7 +110,7 @@ let app = new Vue({
       color_y_talla (i,j1) {
         const color = {
           nombre: "color2",
-          valores:"valores2 colores",
+          valoresA:"valores2 colores",
           valores_:[],
           valor_defecto:"valor_defecto2",
           visible: true
@@ -129,13 +129,13 @@ let app = new Vue({
       zapatos (i,j1) {
         const color = {
           nombre: "colorZapatos",
-          valores:"",
+          valoresA:"",
           valor_defecto:"valor por defecto",
           visible: true
         }
         const talla = {
           nombre: "tallaZapatos",
-          valores:"35,36,37,38,39,40,41,42,43,44,45",
+          valoresA:"35,36,37,38,39,40,41,42,43,44,45",
           valor_defecto:"valor_defecto2",
           visible: true
         }
