@@ -98,24 +98,22 @@ let app = new Vue({
       n_atributo (i,j1) {
         const atributo = {
           nombre: "nombre",
-          valoresA:"valores",
+          valores:[],
           valor_defecto:"valor_defecto",
           visible: true
         }
-        console.log(atributo)
-        console.log(this.tot[j1].atributo)
         this.tot[j1].atributo.unshift(atributo)
       },
       zapatos (i,j1) {
         const color = {
           nombre: "colorZapatos",
-          valoresA:"",
+          valores:[],
           valor_defecto:"valor por defecto",
           visible: true
         }
         const talla = {
           nombre: "tallaZapatos",
-          valoresA:"35,36,37,38,39,40,41,42,43,44,45",
+          valores:[],
           valor_defecto:"valor_defecto2",
           visible: true
         }
@@ -126,14 +124,12 @@ let app = new Vue({
       color_y_talla (i,j1) {
         const color = {
           nombre: "color2",
-          valoresA:"valores2 colores",
           valores:[],
           valor_defecto:"valor_defecto2",
           visible: true
         }
         const talla = {
           nombre: "talla2",
-          valores:"s,m,l,xl",
           valores:[],
           valor_defecto:"valor_defecto2",
           visible: true
