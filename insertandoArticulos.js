@@ -104,6 +104,81 @@ let app = new Vue({
         }
         this.tot[j1].atributo.unshift(atributo)
       },
+      
+      
+      delete_valor_atributo (j1,j2,j3){
+        this.tot[j1].atributo[j2].valores.splice(j3,1)
+      },
+      nuevo_valor_atributo (j1,j2) {
+        const valor_atributo = {
+          valor:"valor_atributo_1",
+          valor_defecto:"false"
+        }
+        this.tot[j1].atributo[j2].valores.unshift(valor_atributo)        
+      },
+      color_y_talla_numeros (i,j1) {        
+        const talla = {
+          nombre: "talla_numeros",
+          valores:[
+            { valor:"32" }, 
+            { valor:"34" }, 
+            { valor:"36" }, 
+            { valor:"38" }, 
+            { valor:"40" }, 
+            { valor:"42" }, 
+            { valor:"44" }, 
+            { valor:"46" }, 
+            { valor:"48" }, 
+            { valor:"50" }, 
+            { valor:"52" }, 
+            { valor:"54" }, 
+            { valor:"56" }, 
+            { valor:"58" }, 
+            { valor:"60" }, 
+            { valor:"62" }
+          ],
+          valor_defecto:"valor_defecto",
+          visible: false
+        }
+        const color = {
+          nombre: "color2",
+          valores:[            
+            { valor:"" }
+          ],
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }        
+        this.tot[j1].atributo.unshift(talla)
+        this.tot[j1].atributo.unshift(color)
+      },
+      color_y_talla_letras (i,j1) {        
+        const talla = {
+          nombre: "talla_letras",
+          valores:[
+            { valor:"XS" }, 
+            { valor:"S" }, 
+            { valor:"M" }, 
+            { valor:"L" },
+            { valor:"XL" },
+            { valor:"2XL" },
+            { valor:"3XL" },
+            { valor:"4XL" },
+            { valor:"5XL" }
+          ],
+          valor_defecto:"valor_defecto",
+          visible: false
+        }
+        const color = {
+          nombre: "color2",
+          valores:[            
+            { valor:"" }
+          ],
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }        
+        this.tot[j1].atributo.unshift(talla)
+        this.tot[j1].atributo.unshift(color)
+      },
       zapatos (i,j1) {
         const color = {
           nombre: "colorZapatos",
@@ -120,35 +195,6 @@ let app = new Vue({
         this.tot[j1].atributo.unshift(color)
         this.tot[j1].atributo.unshift(talla)        
       },
-      
-      color_y_talla (i,j1) {
-        const color = {
-          nombre: "color2",
-          valores:[],
-          valor_defecto:"valor_defecto2",
-          visible: true
-        }
-        const talla = {
-          nombre: "talla2",
-          valores:[],
-          valor_defecto:"valor_defecto2",
-          visible: true
-        }
-        this.tot[j1].atributo.unshift(color)
-        this.tot[j1].atributo.unshift(talla)        
-      },
-      
-      nuevo_valor_atributo (j1,j2) {
-        const valor_atributo = {
-          valor:"valor_atributo_1",
-          valor_defecto:"false"
-        }
-        this.tot[j1].atributo[j2].valores.unshift(valor_atributo)        
-      },
-      delete_valor_atributo (j1,j2,j3){
-        this.tot[j1].atributo[j2].valores.splice(j3,1)
-      },
-      
       encajar_atributo (j1,j2,j3) {
         const valor_atributo = {
           valor:"valor_atributo_1",
@@ -157,12 +203,22 @@ let app = new Vue({
         let n = j3 + 1
         this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo)
       },
-        
+      color (i,j1) {
+        const color = {
+          nombre: "color",
+          valores:[            
+            { valor:"" }
+          ],
+          valor_defecto:"valor_defecto2",
+          visible: true
+        }
+        this.tot[j1].atributo.unshift(color)
+      },
         
         
         
       
-      
+      //##################################
       delete_n_parada (j1,j2,j3) {
         this.tot[j1].destino[j2].parada.splice(j3,1)
       },
