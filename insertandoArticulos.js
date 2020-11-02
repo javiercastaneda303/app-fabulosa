@@ -149,6 +149,18 @@ let app = new Vue({
         }
         this.tot[j1].atributo[j2].valores.unshift(valor_atributo)        
       },
+      delete_valor_atributo (j1,j2,j3){
+        this.tot[j1].atributo[j2].valores.splice(j3,1)
+      },
+      
+      encajar_atributo (j1,j2,j3) {
+        const valor_atributo = {
+          valor:"valor_atributo_1",
+          valor_defecto:"false"
+        }
+        let n = j3 + 1
+        this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo)
+      },
         
         
         

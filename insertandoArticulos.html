@@ -34,11 +34,16 @@
       input( v-model="tot[j1].atributo[j2].valores")
       input( v-model="tot[j1].atributo[j2].valoresA")
       input( v-model="tot[j1].atributo[j2].valor_defecto")
-      //button(v-on:click="nuevo_valor_atributo(i,j1)" ) nuevo_valor_atributo
       button(v-on:click="nuevo_valor_atributo(j1,j2)" ) nuevo_valor_atributo
-    .valor_atributo(v-for="(k, j3) in i.atributo.valores" v-if="tot[j1].atributo[j2].valores.visible")
-      p ---j3:{{j3}}--{{k}}
-    
+      //.valor_atributo(v-for="(k, j3) in i.atributo.valores" v-if="tot[j1].atributo[j2].valores.visible")
+      .valor_atributo(v-for="(k, j3) in j.valores" v-if="tot[j1].atributo[j2].visible")
+        p ---j3:{{j3}}--{{k}}
+        button(v-on:click="delete_valor_atributo(j1,j2,j3)" v-if="borrar") &times delete_valor_atributo
+        input( v-model="tot[j1].atributo[j2].valores[j3].valor")
+        button(v-on:click="encajar_atributo (j1,j2,j3)" ) &plusmn encajar_atributo
+        
+         
+
     
     
     
