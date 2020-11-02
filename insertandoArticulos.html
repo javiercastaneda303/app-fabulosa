@@ -7,7 +7,7 @@
     p Borrar:
     p _
     p _
-    p ---j1:{{j1}} -- {{i}}
+    p ---j1:{{j1}} -&&- {{i}}
     p ----nombre-----ref_fabricante-----pvp------p_coste-----fabricante---descripción
     input.p_float(type="checkbox", v-model="tot[j1].visible")
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
@@ -24,6 +24,10 @@
     
     
     button(v-on:click="n_atributo(i,j1)" ) n_atributo
+    button(v-on:click="color(i,j1)" ) color
+    button(v-on:click="talla_letras(i,j1)" ) XS-5XL
+    button(v-on:click="talla_numeros(i,j1)" ) 32-34-36...
+    
     button(v-on:click="color_y_talla_numeros(i,j1)" ) color y talla numeros
     button(v-on:click="color_y_talla_letras(i,j1)" ) color y talla letras
     button(v-on:click="zapatos(i,j1)" ) zapatos
