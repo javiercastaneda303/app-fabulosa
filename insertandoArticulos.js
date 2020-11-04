@@ -79,9 +79,9 @@ let app = new Vue({
     },
     n_atributo (i,j1) {
       const atributo = {
-        nombre: "nombre",
+        nombre: "",
         valores:[],
-        valor_defecto:"valor_defecto",
+        valor_defecto:"",
         visible: true
       }
       this.tot[j1].atributo.unshift(atributo)
@@ -91,14 +91,14 @@ let app = new Vue({
     },
     nuevo_valor_atributo (j1,j2) {
       const valor_atributo = {
-        valor:"valor_atributo_1",
-        valor_defecto:"false"
+        valor:"",
+        valor_defecto:""
       }
       this.tot[j1].atributo[j2].valores.unshift(valor_atributo)        
     },
     color_y_talla_numeros (i,j1) {        
       const talla = {
-        nombre: "talla_numeros",
+        nombre: "TALLA",
         valores:[
           { valor:"32" }, 
           { valor:"34" }, 
@@ -117,15 +117,15 @@ let app = new Vue({
           { valor:"60" }, 
           { valor:"62" }
         ],
-        valor_defecto:"valor_defecto",
+        valor_defecto:"",
         visible: false
       }
       const color = {
-        nombre: "color2",
+        nombre: "COLOR",
         valores:[            
           { valor:"" }
         ],
-        valor_defecto:"valor_defecto2",
+        valor_defecto:"",
         visible: true
       }        
       this.tot[j1].atributo.unshift(talla)
@@ -145,7 +145,7 @@ let app = new Vue({
           { valor:"4XL" },
           { valor:"5XL" }
         ],
-        valor_defecto:"valor_defecto",
+        valor_defecto:"",
         visible: false
       }
       const color = {
@@ -161,32 +161,19 @@ let app = new Vue({
     },
     zapatos (i,j1) {
       const color = {
-        nombre: "colorZapatos",
+        nombre: "COLOR",
         valores:[],
-        valor_defecto:"valor por defecto",
+        valor_defecto:"",
         visible: true
       }
       const talla = {
-        nombre: "tallaZapatos",
+        nombre: "TALLA",
         valores:[],
-        valor_defecto:"valor_defecto2",
+        valor_defecto:"",
         visible: true
       }
       this.tot[j1].atributo.unshift(color)
       this.tot[j1].atributo.unshift(talla)        
-    },
-    encajar_atributo (j1,j2,j3) {
-      const valor_atributo = {
-        valor:"valor_atributo_1",
-        valor_defecto:"false"
-      }
-      let n = j3 + 1
-      this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo);
-      
-      //const ultimoInput = this.$refs.colores[this.$refs.colores.length - 1];
-      //console.log(ultimoInput);
-      //ultimoInput.$el.focus();
-      document.querySelector(`#${this.tot[j1].focus[i+1]}`).focus()
     },
     color (i,j1) {
       const color = {
@@ -194,7 +181,7 @@ let app = new Vue({
         valores:[            
           { valor:"" }
         ],
-        valor_defecto:"valor_defecto2",
+        valor_defecto:"",
         visible: true
       }
       this.tot[j1].atributo.unshift(color)
@@ -213,7 +200,7 @@ let app = new Vue({
           { valor:"4XL" },
           { valor:"5XL" }          
         ],
-        valor_defecto:"valor_defecto2",
+        valor_defecto:"",
         visible: false
       }
       this.tot[j1].atributo.unshift(letras)
@@ -239,7 +226,7 @@ let app = new Vue({
           { valor:"60" }, 
           { valor:"62" }        
         ],
-        valor_defecto:"valor_defecto2",
+        valor_defecto:"",
         visible: false
       }
       this.tot[j1].atributo.unshift(numeros)
@@ -265,10 +252,24 @@ let app = new Vue({
           { valor:"60" }, 
           { valor:"62" }        
         ],
-        valor_defecto:"valor_defecto2",
+        valor_defecto:"",
         visible: false
       }
       this.tot[j1].atributo.unshift(numeros)
+    }, 
+    
+    encajar_atributo (j1,j2,j3) {
+      const valor_atributo = {
+        valor:"",
+        valor_defecto:"false"
+      }
+      let n = j3 + 1
+      this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo);
+      
+      //const ultimoInput = this.$refs.colores[this.$refs.colores.length - 1];
+      //console.log(ultimoInput);
+      //ultimoInput.$el.focus();
+      document.querySelector(`#${this.tot[j1].focus[i+1]}`).focus()
     },
     crear_variaciones(i,j1){
       let variacionesTallaColor = [];

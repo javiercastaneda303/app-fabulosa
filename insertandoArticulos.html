@@ -11,7 +11,9 @@
     p ----nombre-----ref_fabricante-----pvp------p_coste-----fabricante---descripción
     input.p_float(type="checkbox", v-model="tot[j1].visible")
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
-    input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].datos.nombre" v-on:keyup.enter="moverFoco('hola ',j1,'ref_fabricante')" placeholder="nombre")
+    //lo de mover el foco y tener un id dinámico no es necesario
+    //input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].datos.nombre" v-on:keyup.enter="moverFoco('hola ',j1,'ref_fabricante')" placeholder="nombre")
+    input( v-model="tot[j1].datos.nombre" placeholder="nombre")
     input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante" placeholder="ref_fabricante")
     input( v-model="tot[j1].datos.pvp" id="pvp" placeholder="pvp")
     input( v-model="tot[j1].datos.p_coste" id="p_coste" placeholder="p_coste")
@@ -42,7 +44,8 @@
       .valor_atributo(v-for="(k, j3) in j.valores" v-if="tot[j1].atributo[j2].visible")
         p ---j3:{{j3}}--{{k}}
         button(v-on:click="delete_valor_atributo(j1,j2,j3)" v-if="borrar") &times delete_valor_atributo
-        input(ref="colores" v-on:keyup.enter="encajar_atributo(j1,j2,j3)" v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")
+        //input(ref="colores" v-on:keyup.enter="encajar_atributo(j1,j2,j3)" v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")
+        input(ref="colores"  v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")
         button(v-on:click="encajar_atributo (j1,j2,j3)" ) &plusmn encajar_atributo
         
         
