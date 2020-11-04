@@ -11,15 +11,15 @@
     p ----nombre-----ref_fabricante-----pvp------p_coste-----fabricante---descripción
     input.p_float(type="checkbox", v-model="tot[j1].visible")
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
-    input( v-model="tot[j1].datos.nombre")
-    input( v-model="tot[j1].datos.ref_fabricante")
-    input( v-model="tot[j1].datos.pvp")
-    input( v-model="tot[j1].datos.p_coste")
-    input( v-model="tot[j1].datos.fabricante")
-    input( v-model="tot[j1].datos.descripcion")    
-    input( v-model="tot[j1].datos.categoria")
-    input( v-model="tot[j1].datos.imagen")
-    input( v-model="tot[j1].datos.visible")
+    input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].datos.nombre" v-on:keyup.enter="moverFoco('hola ',j1,'ref_fabricante')" placeholder="nombre")
+    input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante" placeholder="ref_fabricante")
+    input( v-model="tot[j1].datos.pvp" id="pvp" placeholder="pvp")
+    input( v-model="tot[j1].datos.p_coste" id="p_coste" placeholder="p_coste")
+    input( v-model="tot[j1].datos.fabricante" id="fabricante" placeholder="fabricante")
+    input( v-model="tot[j1].datos.descripcion" id="descripcion" placeholder="descripcion")    
+    input( v-model="tot[j1].datos.categoria" id="categoria" placeholder="categoria")
+    input( v-model="tot[j1].datos.imagen" id="imagen" placeholder="imagen")
+    input( v-model="tot[j1].datos.visible" id="visible" placeholder="visible")
     
     
     
@@ -31,18 +31,20 @@
     button(v-on:click="color_y_talla_numeros(i,j1)" ) color y talla numeros
     button(v-on:click="color_y_talla_letras(i,j1)" ) color y talla letras
     button(v-on:click="zapatos(i,j1)" ) zapatos
+    button(v-on:click="crear_variaciones(i,j1)" ) crear_variaciones
     .atributo(v-for="(j, j2) in i.atributo" v-if="tot[j1].visible")
       p ---j2:{{j2}}--{{j}}
       input.p_float(type="checkbox", v-model="tot[j1].atributo[j2].visible")
       button(v-on:click="delete_n_atributo(j1,j2)" v-if="borrar") &times delete_n_atributo
-      input( v-model="tot[j1].atributo[j2].nombre")
-      input( v-model="tot[j1].atributo[j2].valor_defecto")
-      button(v-on:click="nuevo_valor_atributo(j1,j2)" ) nuevo_valor_atributo
+      input( v-model="tot[j1].atributo[j2].nombre" placeholder="Nombre:Color/Talla")
+      input( v-model="tot[j1].atributo[j2].valor_defecto" placeholder="valor por defecto")
+      button(v-on:click="nuevo_valor_atributo(j1,j2)" ) nuevo_valor_atributo      
       .valor_atributo(v-for="(k, j3) in j.valores" v-if="tot[j1].atributo[j2].visible")
         p ---j3:{{j3}}--{{k}}
         button(v-on:click="delete_valor_atributo(j1,j2,j3)" v-if="borrar") &times delete_valor_atributo
-        input( v-model="tot[j1].atributo[j2].valores[j3].valor")
+        input(ref="colores" v-on:keyup.enter="encajar_atributo(j1,j2,j3)" v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")
         button(v-on:click="encajar_atributo (j1,j2,j3)" ) &plusmn encajar_atributo
+        
         
          
 

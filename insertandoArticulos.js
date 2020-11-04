@@ -6,8 +6,7 @@ let app = new Vue({
       borrar: false,
       add_n_hour_visible: true,
       fix: true,
-      segundos: true,
-      
+      segundos: true,        
       newItem: {  /*  aquí falla algo pero no se lo qeu es
         number: 15,
         description: '',
@@ -18,10 +17,8 @@ let app = new Vue({
         lat:'',
         long:'',
         conect:''   */
-      },
-      
-      items: [],
-      
+      },        
+      items: [],        
       fixItem: {
         number: 9,
         description: '9',
@@ -32,8 +29,7 @@ let app = new Vue({
         lat:'',
         long:'',
         conect:'0'
-      },
-      
+      },        
       horarios:{
         horario: {
           dias:'dia',
@@ -43,8 +39,7 @@ let app = new Vue({
           m:0,
           s:0          
         }
-      },
-      
+      },        
       tanda:[]
     }
   },    
@@ -68,27 +63,17 @@ let app = new Vue({
     },    
     n_articulo () {
       const articulo = {
-        datos: {nombre:'nombre',descripcion:'descripcion',pvp:'pvp',p_coste:'p_coste',fabricante:'fabricante',ref_fabricante:'ref_fabicante',categoria:'categoria',imagen:'imagen',visible:'visible'},
+        datos: {nombre:'',descripcion:'',pvp:'',p_coste:'',fabricante:'',ref_fabricante:'',categoria:'',imagen:'',visible:''},
         destino:[],
         atributo:[],
+        variaciones:[],
+        focus:["nombre","ref_fabricante","pvp","p_coste","fabricante"],
         visible: true
       }
       this.tot.unshift(articulo)
+// ésto no funciona, pero tampoco me hace falta       //document.getElementById("ref_fabricante").placeholder = "el fabricante..";
     },
-    delete_n_destino (j1,j2){
-      this.tot[j1].destino.splice(j2,1)
-    },
-    n_destino (i,j1) {
-      const destino = {
-        nombre: {nombre_corto:'',nombre_largo:''},
-        parada:[],
-        horario:[],
-        visible: true,
-        parada_visible: true,
-        horario_visible: true
-      }
-      this.tot[j1].destino.unshift(destino)
-    },
+
     delete_n_atributo (j1,j2){
       this.tot[j1].atributo.splice(j2,1)
     },
@@ -196,7 +181,12 @@ let app = new Vue({
         valor_defecto:"false"
       }
       let n = j3 + 1
-      this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo)
+      this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo);
+      
+      //const ultimoInput = this.$refs.colores[this.$refs.colores.length - 1];
+      //console.log(ultimoInput);
+      //ultimoInput.$el.focus();
+      document.querySelector(`#${this.tot[j1].focus[i+1]}`).focus()
     },
     color (i,j1) {
       const color = {
@@ -280,7 +270,46 @@ let app = new Vue({
       }
       this.tot[j1].atributo.unshift(numeros)
     },
+    crear_variaciones(i,j1){
+      let variacionesTallaColor = [];
+      const [todosLosColores, tallas] = this.tot[j1].atributo;
+      
+      tallas.valores.forEach(talla => {
+        let colores = [...todosLosColores.valores];
+
+         colores.forEach(color => {
+             let combinacion = {
+              talla: talla.valor,
+              color: color.valor,
+              stock: 0,
+              entrada: ''
+            };
+           
+           variacionesTallaColor.push(combinacion)
+         })
+      });
+      this.tot[j1].variaciones = [...variacionesTallaColor]
+      console.log('Variaciones -->', variacionesTallaColor);
+    },
+    moverFoco(name, j1,i){
+      console.log(name)
+      document.querySelector(`#${this.tot[j1].focus[2+1]}`).focus()
+    },
     //##################################
+    delete_n_destino (j1,j2){
+      this.tot[j1].destino.splice(j2,1)
+    },
+    n_destino (i,j1) {
+      const destino = {
+        nombre: {nombre_corto:'',nombre_largo:''},
+        parada:[],
+        horario:[],
+        visible: true,
+        parada_visible: true,
+        horario_visible: true
+      }
+      this.tot[j1].destino.unshift(destino)
+    },
     delete_n_parada (j1,j2,j3) {
       this.tot[j1].destino[j2].parada.splice(j3,1)
     },
