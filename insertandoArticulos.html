@@ -1,22 +1,25 @@
 #app
   .destino
     form(action='', method='post')
-      button(type="submit") Enviarm
+      //button(type="submit") Enviarm
+      
   .anchoTotal(v-for="(i, j1) in tot")
     input(type="checkbox", v-model="borrar") 
     p Borrar:
     p _
-    p _
+    p _   
+    button(v-on:click="n_articulo()" ) Nuevo Artículo 
     p ---j1:{{j1}} -&&- {{i}}
     p ----nombre-----ref_fabricante-----pvp------p_coste-----fabricante---descripción
     input.p_float(type="checkbox", v-model="tot[j1].visible")
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
     //lo de mover el foco y tener un id dinámico no es necesario
-    //input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].datos.nombre" v-on:keyup.enter="moverFoco('hola ',j1,'ref_fabricante')" placeholder="nombre")
-    input( v-model="tot[j1].datos.nombre" placeholder="nombre")
-    input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante" placeholder="ref_fabricante")
-    input( v-model="tot[j1].datos.pvp" id="pvp" placeholder="pvp")
-    input( v-model="tot[j1].datos.p_coste" id="p_coste" placeholder="p_coste")
+    input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].id.nombre" v-on:keyup.enter="moverFoco('hola ',j1)" placeholder="nombre")
+    //input( v-model="tot[j1].datos.nombre" placeholder="nombre")
+    //input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante" placeholder="ref_fabricante")
+    input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante"   placeholder="ref_fabricante")
+    input( v-model="tot[j1].datos.pvp" v-bind:id="tot[j1].id.pvp" placeholder="pvp" v-on:keyup.enter="moverFoco2(tot[j1].id.p_coste,j1)")
+    input( v-model="tot[j1].datos.p_coste" id="p_coste0" placeholder="p_coste" v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")
     input( v-model="tot[j1].datos.fabricante" id="fabricante" placeholder="fabricante")
     input( v-model="tot[j1].datos.descripcion" id="descripcion" placeholder="descripcion")    
     input( v-model="tot[j1].datos.categoria" id="categoria" placeholder="categoria")
@@ -47,13 +50,14 @@
         //input(ref="colores" v-on:keyup.enter="encajar_atributo(j1,j2,j3)" v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")
         input(ref="colores"  v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")
         button(v-on:click="encajar_atributo (j1,j2,j3)" ) &plusmn encajar_atributo
-        
-        
-         
-
-    
-    
-    
+    //visualizando las variaciones
+    //input.p_float(type="checkbox", v-model="tot[j1].variaciones[j2].visible")
+    .atributo(v-for="(j, j2) in i.variaciones" v-if="tot[j1].visible")
+      p ---j2:{{j2}}--{{j}}
+      
+      button(v-on:click="delete_n_variaciones(j1,j2)" v-if="borrar") &times delete_variaciones
+      input( v-model="tot[j1].variaciones[j2].stock" )
+      input( v-model="tot[j1].variaciones[j2].etiquetas" )
     
     
     button(v-on:click="n_destino(i,j1)" ) n_destino 
@@ -110,7 +114,7 @@
       #table
         tr.tableform
           td.subtotal
-             button(v-on:click="n_articulo" ) Nuevo Artículo
+             button(v-on:click="n_articulo()" ) Nuevo Artículo
           td.tableform
             p Borrar:
             input(type="checkbox", v-model="borrar") 

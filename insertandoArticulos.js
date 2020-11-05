@@ -4,6 +4,7 @@ let app = new Vue({
     return {
       tot: [],
       borrar: false,
+      cont: 0,
       add_n_hour_visible: true,
       fix: true,
       segundos: true,        
@@ -64,6 +65,16 @@ let app = new Vue({
     n_articulo () {
       const articulo = {
         datos: {nombre:'',descripcion:'',pvp:'',p_coste:'',fabricante:'',ref_fabricante:'',categoria:'',imagen:'',visible:''},
+        id:{nombre:'nombre'+this.cont ,
+            descripcion:'descripcion'+this.cont,
+            pvp:'pvp'+this.cont,
+            p_coste:'p_coste'+this.cont,
+            fabricante:'fabricante'+this.cont,
+            ref_fabricante:'ref_fabricante'+this.cont,
+            categoria:'categoria'+this.cont,
+            imagen:'imagen'+this.cont,
+            visible:'visible'+this.cont,
+            cont: this.cont},
         destino:[],
         atributo:[],
         variaciones:[],
@@ -71,6 +82,7 @@ let app = new Vue({
         visible: true
       }
       this.tot.unshift(articulo)
+      this.cont = this.cont +1
 // ésto no funciona, pero tampoco me hace falta       //document.getElementById("ref_fabricante").placeholder = "el fabricante..";
     },
 
@@ -118,7 +130,7 @@ let app = new Vue({
           { valor:"62" }
         ],
         valor_defecto:"",
-        visible: false
+        visible: true
       }
       const color = {
         nombre: "COLOR",
@@ -146,7 +158,7 @@ let app = new Vue({
           { valor:"5XL" }
         ],
         valor_defecto:"",
-        visible: false
+        visible: true
       }
       const color = {
         nombre: "color2",
@@ -201,7 +213,7 @@ let app = new Vue({
           { valor:"5XL" }          
         ],
         valor_defecto:"",
-        visible: false
+        visible: true
       }
       this.tot[j1].atributo.unshift(letras)
     },
@@ -227,7 +239,7 @@ let app = new Vue({
           { valor:"62" }        
         ],
         valor_defecto:"",
-        visible: false
+        visible: true
       }
       this.tot[j1].atributo.unshift(numeros)
     },   
@@ -253,7 +265,7 @@ let app = new Vue({
           { valor:"62" }        
         ],
         valor_defecto:"",
-        visible: false
+        visible: true
       }
       this.tot[j1].atributo.unshift(numeros)
     }, 
@@ -280,10 +292,10 @@ let app = new Vue({
 
          colores.forEach(color => {
              let combinacion = {
-              talla: talla.valor,
-              color: color.valor,
+              a: talla.valor,
+              b: color.valor,
               stock: 0,
-              entrada: ''
+              etiquetas: 0
             };
            
            variacionesTallaColor.push(combinacion)
@@ -294,8 +306,30 @@ let app = new Vue({
     },
     moverFoco(name, j1,i){
       console.log(name)
-      document.querySelector(`#${this.tot[j1].focus[2+1]}`).focus()
+      console.log(this.tot[j1].id.ref_fabricante)
+      //document.querySelector(`#${this.tot[j1].focus[2+1]}`).focus()
+      //document.querySelector(`#${this.tot[j1].id.ref_fabricante}`).focus()
+     //document.querySelector("ref_fabricante").focus()
+     document.querySelector(`#${"ref_fabricante"}`).focus() 
     },
+    moverFoco2(name, j1){
+      console.log(name)
+      console.log(typeof (name))
+      
+     //document.querySelector(`#${'name'}`).focus()
+      //document.querySelector(`#${"0p_coste"}`).focus()
+      //document.querySelector(`#${"ref_fabricante"}`).focus() 
+      document.querySelector(`#${"p_coste0"}`).focus()
+    },
+    moverFoco3(name, j1){
+      console.log(name)
+      
+     //document.querySelector(`#${'name'}`).focus()
+      //document.querySelector(`#${"0p_coste"}`).focus()
+      //document.querySelector(`#${"ref_fabricante"}`).focus() 
+      document.querySelector(`#${"name"}`).focus()
+    },
+    
     //##################################
     delete_n_destino (j1,j2){
       this.tot[j1].destino.splice(j2,1)
