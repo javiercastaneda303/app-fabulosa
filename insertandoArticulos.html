@@ -14,13 +14,15 @@
     input.p_float(type="checkbox", v-model="tot[j1].visible")
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
     //lo de mover el foco y tener un id dinámico no es necesario
-    input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].id.nombre" v-on:keyup.enter="moverFoco('hola ',j1)" placeholder="nombre")
+    input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].id.nombre" 
+    v-on:keyup.enter="moverFoco('hola ',j1)" placeholder="nombre")
     //input( v-model="tot[j1].datos.nombre" placeholder="nombre")
     //input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante" placeholder="ref_fabricante")
     input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante"   placeholder="ref_fabricante")
     input( v-model="tot[j1].datos.pvp" v-bind:id="tot[j1].id.pvp" placeholder="pvp" v-on:keyup.enter="moverFoco2(tot[j1].id.p_coste,j1)")
-    input( v-model="tot[j1].datos.p_coste" id="p_coste0" placeholder="p_coste" v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")
-    input( v-model="tot[j1].datos.fabricante" id="fabricante" placeholder="fabricante")
+    input( v-model="tot[j1].datos.p_coste" id="p_coste0" placeholder="p_coste" 
+    v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")
+    input( v-model="tot[j1].datos.fabricante" v-bind:id="tot[j1].id.fabricante" placeholder="fabricante")
     input( v-model="tot[j1].datos.descripcion" id="descripcion" placeholder="descripcion")    
     input( v-model="tot[j1].datos.categoria" id="categoria" placeholder="categoria")
     input( v-model="tot[j1].datos.imagen" id="imagen" placeholder="imagen")

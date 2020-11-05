@@ -321,13 +321,8 @@ let app = new Vue({
       //document.querySelector(`#${"ref_fabricante"}`).focus() 
       document.querySelector(`#${"p_coste0"}`).focus()
     },
-    moverFoco3(name, j1){
-      console.log(name)
-      
-     //document.querySelector(`#${'name'}`).focus()
-      //document.querySelector(`#${"0p_coste"}`).focus()
-      //document.querySelector(`#${"ref_fabricante"}`).focus() 
-      document.querySelector(`#${"name"}`).focus()
+    moverFoco3(name){
+      document.querySelector(`#${name}`).focus()
     },
     
     //##################################
