@@ -13,20 +13,30 @@
     p ----nombre-----ref_fabricante-----pvp------p_coste-----fabricante---descripción
     input.p_float(type="checkbox", v-model="tot[j1].visible")
     button(v-on:click="delete_articulo(j1)" v-if="borrar") &times delete_articulo
-    //lo de mover el foco y tener un id dinámico no es necesario
+    
     input( v-model="tot[j1].datos.nombre" v-bind:id="tot[j1].id.nombre" 
-    v-on:keyup.enter="moverFoco('hola ',j1)" placeholder="nombre")
-    //input( v-model="tot[j1].datos.nombre" placeholder="nombre")
-    //input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante" placeholder="ref_fabricante")
-    input( v-model="tot[j1].datos.ref_fabricante" id="ref_fabricante"   placeholder="ref_fabricante")
-    input( v-model="tot[j1].datos.pvp" v-bind:id="tot[j1].id.pvp" placeholder="pvp" v-on:keyup.enter="moverFoco2(tot[j1].id.p_coste,j1)")
-    input( v-model="tot[j1].datos.p_coste" id="p_coste0" placeholder="p_coste" 
-    v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")
-    input( v-model="tot[j1].datos.fabricante" v-bind:id="tot[j1].id.fabricante" placeholder="fabricante")
-    input( v-model="tot[j1].datos.descripcion" id="descripcion" placeholder="descripcion")    
-    input( v-model="tot[j1].datos.categoria" id="categoria" placeholder="categoria")
-    input( v-model="tot[j1].datos.imagen" id="imagen" placeholder="imagen")
-    input( v-model="tot[j1].datos.visible" id="visible" placeholder="visible")
+    placeholder="nombre"
+    v-on:keyup.enter="moverFoco3(tot[j1].id.ref_fabricante)")    
+    input( v-model="tot[j1].datos.ref_fabricante" 
+    v-bind:id="tot[j1].id.ref_fabricante"   placeholder="ref_fabricante"
+    v-on:keyup.enter="moverFoco3(tot[j1].id.pvp)")    
+    input( v-model="tot[j1].datos.pvp" v-bind:id="tot[j1].id.pvp" placeholder="pvp" 
+    v-on:keyup.enter="moverFoco3(tot[j1].id.p_coste)")    
+    input( v-model="tot[j1].datos.p_coste" 
+    v-bind:id="tot[j1].id.p_coste" placeholder="p_coste" 
+    v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")    
+    input( v-model="tot[j1].datos.fabricante" 
+    v-bind:id="tot[j1].id.fabricante" placeholder="fabricante"
+    v-on:keyup.enter="moverFoco3(tot[j1].id.descripcion)")    
+    input( v-model="tot[j1].datos.descripcion" 
+    v-bind:id="tot[j1].id.descripcion" placeholder="descripcion"
+    v-on:keyup.enter="moverFoco3(tot[j1].id.categoria)")    
+    input( v-model="tot[j1].datos.categoria" 
+    v-bind:id="tot[j1].id.categoria" placeholder="categoria"
+    v-on:keyup.enter="moverFoco3(tot[j1].id.imagen)")    
+    input( v-model="tot[j1].datos.imagen" v-bind:id="tot[j1].id.imagen" placeholder="imagen" v-on:keyup.enter="moverFoco3(tot[j1].id.visible)")    
+    input( v-model="tot[j1].datos.visible" 
+    v-bind:id="tot[j1].id.visible" placeholder="visible")
     
     
     
@@ -46,7 +56,8 @@
       input( v-model="tot[j1].atributo[j2].nombre" placeholder="Nombre:Color/Talla")
       input( v-model="tot[j1].atributo[j2].valor_defecto" placeholder="valor por defecto")
       button(v-on:click="nuevo_valor_atributo(j1,j2)" ) nuevo_valor_atributo      
-      .valor_atributo(v-for="(k, j3) in j.valores" v-if="tot[j1].atributo[j2].visible")
+      .valor_atributo(v-for="(k, j3) in j.valores" 
+      v-if="tot[j1].atributo[j2].visible")
         p ---j3:{{j3}}--{{k}}
         button(v-on:click="delete_valor_atributo(j1,j2,j3)" v-if="borrar") &times delete_valor_atributo
         //input(ref="colores" v-on:keyup.enter="encajar_atributo(j1,j2,j3)" v-model="tot[j1].atributo[j2].valores[j3].valor" placeholder="valor")

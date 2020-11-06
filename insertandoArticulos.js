@@ -322,6 +322,9 @@ let app = new Vue({
       document.querySelector(`#${"p_coste0"}`).focus()
     },
     moverFoco3(name){
+      console.log("estoy en MoverFoco3")
+      console.log(name)
+      console.log(typeof (name))
       document.querySelector(`#${name}`).focus()
     },
     
