@@ -94,6 +94,7 @@ let app = new Vue({
         nombre: "",
         valores:[],
         valor_defecto:"",
+        cont: 0,
         visible: true
       }
       this.tot[j1].atributo.unshift(atributo)
@@ -104,8 +105,12 @@ let app = new Vue({
     nuevo_valor_atributo (j1,j2) {
       const valor_atributo = {
         valor:"",
-        valor_defecto:""
+        valor_defecto:"",
+        nombre: this.tot[j1].atributo[j2].nombre,
+        id: this.tot[j1].atributo[j2].cont
       }
+      this.tot[j1].atributo[j2].cont = this.tot[j1].atributo[j2].cont + 1 
+            
       this.tot[j1].atributo[j2].valores.unshift(valor_atributo)        
     },
     color_y_talla_numeros (i,j1) {        
@@ -271,10 +276,13 @@ let app = new Vue({
     }, 
     
     encajar_atributo (j1,j2,j3) {
-      const valor_atributo = {
+      let valor_atributo = {
         valor:"",
-        valor_defecto:"false"
+        valor_defecto:"false",
+        nombre: this.tot[j1].atributo[j2].nombre,
+        id: this.tot[j1].atributo[j2].cont
       }
+      this.tot[j1].atributo[j2].cont = this.tot[j1].atributo[j2].cont + 1
       let n = j3 + 1
       this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo);
       
@@ -282,6 +290,11 @@ let app = new Vue({
       //console.log(ultimoInput);
       //ultimoInput.$el.focus();
       document.querySelector(`#${this.tot[j1].focus[i+1]}`).focus()
+    },
+    
+    encajar_atributo_y_foco(j1,j2,j3){
+      this.encajar_atributo (j1,j2,j3)
+      
     },
     crear_variaciones(i,j1){
       let variacionesTallaColor = [];
@@ -303,6 +316,10 @@ let app = new Vue({
       });
       this.tot[j1].variaciones = [...variacionesTallaColor]
       console.log('Variaciones -->', variacionesTallaColor);
+      this.tot[j1].atributo["0"].visible = false
+      this.tot[j1].atributo["1"].visible = false
+      console.log("atributo")
+      console.log(this.tot[j1].atributo[0].visible)
     },
     moverFoco(name, j1,i){
       console.log(name)
