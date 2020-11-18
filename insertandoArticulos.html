@@ -62,6 +62,13 @@
     
     
     
+    button(v-on:click="color_2(i,j1)" v-if="tot[j1].visible") color_2
+    button(v-on:click="talla_zapatos_2(i,j1)" v-if="tot[j1].visible") talla_zapatos_2
+    button(v-on:click="talla_numeros_2(i,j1)" v-if="tot[j1].visible") talla_32_34_36
+    button(v-on:click="talla_letras_2(i,j1)" v-if="tot[j1].visible") talla_XS_5XL
+    button(v-on:click="talla_unica_2(i,j1)" v-if="tot[j1].visible") talla_UNICA
+    button(v-on:click="n_atributo_2(i,j1)" v-if="tot[j1].visible") n_atributo_2
+    
     button(v-on:click="n_atributo(i,j1)" v-if="tot[j1].visible") n_atributo
     button(v-on:click="color(i,j1)" v-if="tot[j1].visible") color
     button(v-on:click="talla_letras(i,j1)" v-if="tot[j1].visible") XS-5XL
