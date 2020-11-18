@@ -107,7 +107,7 @@ let app = new Vue({
         valor:"",
         valor_defecto:"",
         nombre: this.tot[j1].atributo[j2].nombre,
-        id: this.tot[j1].atributo[j2].cont
+        //id: "a" + j1 + this.tot[j1].atributo[j2].cont
       }
       this.tot[j1].atributo[j2].cont = this.tot[j1].atributo[j2].cont + 1 
             
@@ -280,20 +280,27 @@ let app = new Vue({
         valor:"",
         valor_defecto:"false",
         nombre: this.tot[j1].atributo[j2].nombre,
-        id: this.tot[j1].atributo[j2].cont
+        //id: "a" + this.tot[j1].atributo[j2].cont
       }
-      this.tot[j1].atributo[j2].cont = this.tot[j1].atributo[j2].cont + 1
+      //this.tot[j1].atributo[j2].cont = this.tot[j1].atributo[j2].cont + 1
       let n = j3 + 1
       this.tot[j1].atributo[j2].valores.splice(n,0,valor_atributo);
       
       //const ultimoInput = this.$refs.colores[this.$refs.colores.length - 1];
       //console.log(ultimoInput);
       //ultimoInput.$el.focus();
-      document.querySelector(`#${this.tot[j1].focus[i+1]}`).focus()
+      //document.querySelector(`#${this.tot[j1].focus[i+1]}`).focus()
     },
     
     encajar_atributo_y_foco(j1,j2,j3){
       this.encajar_atributo (j1,j2,j3)
+
+    let n3 = j3 + 1
+    let name = this.tot[j1].atributo[j2].valores[n3].id
+    console.log(name)
+    console.log(typeof(name))
+    //document.querySelector(`#${name}`).focus()
+//no te compliques de momento       document.querySelector(`#${this.tot[j1].atributo[j2].valores[n3].id}`).focus()
       
     },
     crear_variaciones(i,j1){
