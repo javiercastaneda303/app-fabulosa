@@ -26,7 +26,18 @@ h3{
 }
 label{
   color: blue;
+  display: inline;  
 }
+.backgroundRed{
+  background-color: red;
+  color: white;
+}
+
+
+
+
+
+
 p{
   font-size: .7em;
   color: #666;
@@ -216,6 +227,9 @@ tr.service input {
   z-index: 10000;
   color: white; 
   margin-left: 100px;
+}
+
+
 }
 
 
