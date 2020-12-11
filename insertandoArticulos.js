@@ -89,7 +89,7 @@ let app = new Vue({
     delete_n_atributo (j1,j2){
       this.tot[j1].atributo.splice(j2,1)
     },
-    n_atributo_2 (i,j1,nombre,valores,defecto) {
+    n_atributo (i,j1,nombre,valores,defecto) {
       const atributo = {
         nombre: nombre || "",
         valores:valores || [{ valor:"" }],
@@ -99,12 +99,12 @@ let app = new Vue({
       }
       this.tot[j1].atributo.unshift(atributo)
     },
-    color_2 (i,j1){
+    color (i,j1){
       let nombre= "color"
       let valores=[{ valor:""}]
-      this.n_atributo_2 (i,j1,nombre,valores)  
+      this.n_atributo (i,j1,nombre,valores)  
     },
-    talla_zapatos_2(i,j1){
+    talla_zapatos(i,j1){
       let nombre = "talla"
       let valores = [  
           { valor:"35" }, 
@@ -118,9 +118,9 @@ let app = new Vue({
           { valor:"43" }, 
           { valor:"44" }
         ]
-      this.n_atributo_2 (i,j1,nombre,valores)
+      this.n_atributo (i,j1,nombre,valores)
     },
-    talla_letras_2(i,j1){
+    talla_letras(i,j1){
       let nombre = "talla"
       let valores = [  
           { valor:"XS" }, 
@@ -133,9 +133,9 @@ let app = new Vue({
           { valor:"4XL" },
           { valor:"5XL" }        
         ]
-      this.n_atributo_2 (i,j1,nombre,valores)
+      this.n_atributo (i,j1,nombre,valores)
     },
-    talla_numeros_2(i,j1){
+    talla_numeros(i,j1){
       let nombre = "talla"
       let valores = [  
           { valor:"32" }, 
@@ -155,15 +155,15 @@ let app = new Vue({
           { valor:"60" }, 
           { valor:"62" }        
         ]
-      this.n_atributo_2 (i,j1,nombre,valores)
+      this.n_atributo (i,j1,nombre,valores)
     },
-    talla_unica_2(i,j1){
+    talla_unica(i,j1){
       let nombre = "talla"
       let valores = [  
           { valor:"UNICA" }     
         ]
       let defecto ="UNICA"
-      this.n_atributo_2 (i,j1,nombre,valores,defecto)
+      this.n_atributo (i,j1,nombre,valores,defecto)
     },
     
     delete_valor_atributo (j1,j2,j3){
