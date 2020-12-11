@@ -20,42 +20,42 @@
     v-bind:id="tot[j1].id.nombre"
     placeholder="nombre"
     v-on:keyup.enter="moverFoco3(tot[j1].id.ref_fabricante)")
-    
+    p
     label(v-bind:for="tot[j1].id.ref_fabricante" v-if="tot[j1].visible") ref_fabricante 
     input( v-model="tot[j1].datos.ref_fabricante" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.ref_fabricante"   placeholder="ref_fabricante"
     v-on:keyup.enter="moverFoco3(tot[j1].id.pvp)")
-    
+    p
     label(v-bind:for="tot[j1].id.pvp" v-if="tot[j1].visible") pvp
     input( v-model="tot[j1].datos.pvp" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.pvp" placeholder="pvp" 
     v-on:keyup.enter="moverFoco3(tot[j1].id.p_coste)")
-    
+    p
     label(v-bind:for="tot[j1].id.p_coste" v-if="tot[j1].visible") p_coste
     input( v-model="tot[j1].datos.p_coste" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.p_coste" placeholder="p_coste" 
     v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")
-    
+    p
     label(v-bind:for="tot[j1].id.fabricante" v-if="tot[j1].visible") fabricante
     input( v-model="tot[j1].datos.fabricante" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.fabricante" placeholder="fabricante"
     v-on:keyup.enter="moverFoco3(tot[j1].id.descripcion)")
-    
+    p
     label(v-bind:for="tot[j1].id.descripcion" v-if="tot[j1].visible") descripcion
     input( v-model="tot[j1].datos.descripcion" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.descripcion" placeholder="descripcion"
     v-on:keyup.enter="moverFoco3(tot[j1].id.categoria)")
-    
+    p
     label(v-bind:for="tot[j1].id.categoria" v-if="tot[j1].visible") categoria
     input( v-model="tot[j1].datos.categoria" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.categoria" placeholder="categoria"
     v-on:keyup.enter="moverFoco3(tot[j1].id.imagen)")
-    
+    p
     label(v-bind:for="tot[j1].id.imagen" v-if="tot[j1].visible") imagen
     input( v-model="tot[j1].datos.imagen" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.imagen" placeholder="imagen" 
     v-on:keyup.enter="moverFoco3(tot[j1].id.visible)")
-    
+    p
     label(v-bind:for="tot[j1].id.visible" v-if="tot[j1].visible") visible
     input( v-model="tot[j1].datos.visible" v-if="tot[j1].visible"
     v-bind:id="tot[j1].id.visible" placeholder="visible")
