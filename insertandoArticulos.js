@@ -3,6 +3,7 @@ let app = new Vue({
   data () {
     return {
       tot: [],
+      id_variaciones: 5000,
       borrar: false,
       cont: 0,
       add_n_hour_visible: true,
@@ -78,6 +79,7 @@ let app = new Vue({
         destino:[],
         atributo:[],
         variaciones:[],
+        csv:[],
         focus:["nombre","ref_fabricante","pvp","p_coste","fabricante"],
         visible: true
       }
@@ -214,13 +216,50 @@ let app = new Vue({
            variacionesTallaColor.push(combinacion)
          })
       });
+
+
       this.tot[j1].variaciones = [...variacionesTallaColor]
       console.log('Variaciones -->', variacionesTallaColor);
       this.tot[j1].atributo["0"].visible = false
       this.tot[j1].atributo["1"].visible = false
       console.log("atributo")
       console.log(this.tot[j1].atributo[0].visible)
-    },    
+    },
+    
+    crear_csv(i,j1){
+      let csv_linea = [];
+      let variaciones = [...this.tot[j1].variaciones];
+      
+      variaciones.forEach(talla => {
+        let variacion_csv = {
+          id: "ccx",
+          tipo: "variation",
+          nombre: "nombre",
+          publicado: "publicado",
+          visivilidad_en_el_catalogo: "",
+          sku: "",
+          costo: "",
+          precio_normal: "",
+          descripcion: "",
+          descripcion_corta: "",
+          categorias: ""
+        };
+          
+        csv.push(variacion_csv)//  tunealo para ésta función
+        console.log("id:",this.id_variaciones)
+        console.log(variacion_csv)
+
+      });
+      this.tot[j1].csv = [...csv_linea]
+      
+
+    },
+    
+    id_variaciones_function (){
+      let n = this.id_variaciones
+      this.id_variaciones = this.id_variaciones +1
+      return n
+    },
     
     encajar_atributo_y_foco(j1,j2,j3){
       this.encajar_atributo (j1,j2,j3)
