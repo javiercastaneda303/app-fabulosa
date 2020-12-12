@@ -166,6 +166,23 @@ let app = new Vue({
         ]
       let defecto ="UNICA"
       this.n_atributo (i,j1,nombre,valores,defecto)
+    },   
+    
+    atributos_ejemplo(i,j1){
+      let nombre1 = "talla"
+      let valores1 = [  
+          { valor:"12" },
+          { valor:"14" }     
+        ]
+      let defecto1 ="12"
+      this.n_atributo (i,j1,nombre1,valores1,defecto1)
+      let nombre2 = "color"
+      let valores2 = [  
+          { valor:"verde" },
+          { valor:"azul" }     
+        ]
+      let defecto2 ="verde"
+      this.n_atributo (i,j1,nombre2,valores2,defecto2)
     },
     
     delete_valor_atributo (j1,j2,j3){
@@ -244,13 +261,14 @@ let app = new Vue({
           descripcion_corta: "",
           categorias: ""
         };
-          
-        csv.push(variacion_csv)//  tunealo para ésta función
-        console.log("id:",this.id_variaciones)
+                 
+        //csv.push(variacion_csv)//  tunealo para ésta función
+        //console.log("id:",this.id_variaciones)
         console.log(variacion_csv)
+        console.log("hola colega")
 
       });
-      this.tot[j1].csv = [...csv_linea]
+      //this.tot[j1].csv = [...csv_linea]
       
 
     },
