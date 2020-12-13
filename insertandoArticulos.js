@@ -3,6 +3,22 @@ let app = new Vue({
   data () {
     return {
       tot: [],
+      csv_cabecera: [
+        "ID",
+        "superior",
+        "tipo",
+        "Nombre",
+        "ref_fabicante",
+        "costo",
+        "precio_normal",
+        "inventario",
+        "categorias",
+        "fabricante",
+        "imagenes",
+        "Nombre del atributo 1","valores del atributo 1","Atributo visible 1","atributo global 1","atributo por defecto 1",
+        "Nombre del atributo 2","valores del atributo 2","Atributo visible 2","atributo global 2","atributo por defecto 2"
+      
+        ],
       csv_total: [],
       id_variaciones: 5000,
       borrar: false,
@@ -243,12 +259,19 @@ let app = new Vue({
       console.log("atributo")
       console.log(this.tot[j1].atributo[0].visible)
     },
-    
+     
     crear_csv(i,j1){
+      console.log(this.csv_cabecera);
+      console.log("el renglón anterior tienes que eliminarlo %%%%")
       let csv_linea = [];
       let variaciones = [...this.tot[j1].variaciones];
-      let variacion_linea = []
-      
+      let variacion_linea = [];
+      let id_superior = this.id_variaciones_function (); 
+      let csv_cabecera_variaciones = [id_superior,"","variable",this.tot[j1].datos.nombre,this.tot[j1].datos.ref_fabricante,this.tot[j1].datos.p_coste,this.tot[j1].datos.pvp,"",this.tot[j1].datos.categoria,this.tot[j1].datos.fabricante,this.tot[j1].datos.imagen];
+      console.log(csv_cabecera_variaciones);
+
+      let j2 = 0;  //%%%%javi ésto es una chapuza, el segúndo índice me lo tiene quedar el forEach
+
       variaciones.forEach(talla => {
         let variacion_csv = {
           id: this.id_variaciones_function (),
@@ -268,7 +291,10 @@ let app = new Vue({
         //console.log("id:",this.id_variaciones)
         //console.log(variacion_csv)
         //console.log(csv_linea)
-        variacion_linea = [variacion_csv.id,"variation", variacion_csv.nombre, variacion_csv.costo, variacion_csv.precio_normal,variacion_csv.categorias]
+        // %%%% no entiendo por que me lo pasa a string el valor del stock 
+        variacion_linea = ["",variacion_csv.id,"variation",this.tot[j1].datos.nombre,this.tot[j1].datos.ref_fabricante,this.tot[j1].datos.p_coste,this.tot[j1].datos.pvp,Number(this.tot[j1].variaciones[j2].stock),this.tot[j1].datos.categoria,this.tot[j1].datos.fabricante,this.tot[j1].datos.imagen]; 
+        j2 = j2 + 1 // javi súmele uno con += o como vaya
+        //variacion_csv.nombre, variacion_csv.costo, variacion_csv.precio_normal,variacion_csv.categorias];
         console.log(variacion_linea)
         csv_linea.push(variacion_linea) //  tunealo para ésta función
       });
