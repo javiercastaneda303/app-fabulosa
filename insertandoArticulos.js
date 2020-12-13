@@ -3,6 +3,7 @@ let app = new Vue({
   data () {
     return {
       tot: [],
+      csv_total: [],
       id_variaciones: 5000,
       borrar: false,
       cont: 0,
@@ -246,27 +247,30 @@ let app = new Vue({
     crear_csv(i,j1){
       let csv_linea = [];
       let variaciones = [...this.tot[j1].variaciones];
+      let variacion_linea = []
       
       variaciones.forEach(talla => {
         let variacion_csv = {
-          id: "ccx",
+          id: this.id_variaciones_function (),
           tipo: "variation",
           nombre: "nombre",
           publicado: "publicado",
-          visivilidad_en_el_catalogo: "",
-          sku: "",
-          costo: "",
-          precio_normal: "",
-          descripcion: "",
-          descripcion_corta: "",
-          categorias: ""
+          visivilidad_en_el_catalogo: "visible",
+          sku: "sku",
+          costo: "costo",
+          precio_normal: "precio normal",
+          descripcion: "descripción",
+          descripcion_corta: "descripción corta",
+          categorias: "categorias"
         };
                  
-        //csv.push(variacion_csv)//  tunealo para ésta función
+        
         //console.log("id:",this.id_variaciones)
-        console.log(variacion_csv)
-        console.log("hola colega")
-
+        //console.log(variacion_csv)
+        //console.log(csv_linea)
+        variacion_linea = [variacion_csv.id,"variation", variacion_csv.nombre, variacion_csv.costo, variacion_csv.precio_normal,variacion_csv.categorias]
+        console.log(variacion_linea)
+        csv_linea.push(variacion_linea) //  tunealo para ésta función
       });
       //this.tot[j1].csv = [...csv_linea]
       
