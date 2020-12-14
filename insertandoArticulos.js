@@ -17,7 +17,7 @@ let app = new Vue({
         "imagenes",
         "Nombre del atributo 1","valores del atributo 1","Atributo visible 1","atributo global 1","Valor defecto 1",
         "Nombre del atributo 2","valores del atributo 2","Atributo visible 2","atributo global 2","Valor defecto 2",
-      
+        "%"      
         ],
       csv_total: [],
       id_variaciones: 5000,
@@ -287,9 +287,11 @@ let app = new Vue({
         this.tot[j1].atributo[1].nombre,
         this.valores_atributos (1,j1),
         1,0,
-        this.tot[j1].atributo[1].valor_defecto
+        this.tot[j1].atributo[1].valor_defecto,
+        "%"
       ];
       console.log("csv_cabecera_variaciones",csv_cabecera_variaciones);
+      this.tot[j1].csv = [...csv_cabecera_variaciones]
 
       let j2 = 0;  //%%%%javi ésto es una chapuza, el segúndo índice me lo tiene quedar el forEach
 
@@ -314,8 +316,8 @@ let app = new Vue({
         //console.log(csv_linea)
         // %%%% no entiendo por que me lo pasa a string el valor del stock 
         variacion_linea = [
-          "",
           variacion_csv.id,
+          id_superior,
           "variation",
           this.tot[j1].datos.nombre,
           this.tot[j1].datos.ref_fabricante,
@@ -330,14 +332,18 @@ let app = new Vue({
           "",0,"",
           this.tot[j1].atributo[1].nombre,
           this.tot[j1].variaciones[j2].a,
-          "",0,""]; 
+          "",0,"",
+          "%"]; 
         j2 = j2 + 1 // javi súmele uno con += o como vaya
         //variacion_csv.nombre, variacion_csv.costo, variacion_csv.precio_normal,variacion_csv.categorias];
         console.log("variacion_linea: ",variacion_linea)
-        csv_linea.push(variacion_linea) //  tunealo para ésta función
+        //csv_linea.push([...variacion_linea]) //  tunealo para ésta función        
+        csv_linea = csv_linea.concat(variacion_linea);
       });
       //this.tot[j1].csv = [...csv_linea]
-      
+      this.tot[j1].csv = this.tot[j1].csv.concat(csv_linea);
+      this.tot[j1].csv = this.csv_cabecera.concat(this.tot[j1].csv);
+      console.log("Ésto es todo colega: ",this.tot[j1].csv);
 
     },
     
@@ -398,6 +404,9 @@ let app = new Vue({
       console.log(name)
       console.log(typeof (name))
       document.querySelector(`#${name}`).focus()
-    }   
+    },
+    concatenando(){
+      csv_cabecera_variaciones.concat(csv_cabecera_variaciones).concat(csv_linea)
+    }
   }
 })
