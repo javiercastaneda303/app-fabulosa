@@ -15,12 +15,13 @@ let app = new Vue({
         "categorias",
         "fabricante",
         "imagenes",
-        "Nombre del atributo 1","valores del atributo 1","Atributo visible 1","atributo global 1","atributo por defecto 1",
-        "Nombre del atributo 2","valores del atributo 2","Atributo visible 2","atributo global 2","atributo por defecto 2"
+        "Nombre del atributo 1","valores del atributo 1","Atributo visible 1","atributo global 1","Valor defecto 1",
+        "Nombre del atributo 2","valores del atributo 2","Atributo visible 2","atributo global 2","Valor defecto 2",
       
         ],
       csv_total: [],
       id_variaciones: 5000,
+      ensayo_portapapeles: "hola colega",
       borrar: false,
       cont: 0,
       add_n_hour_visible: true,
@@ -267,8 +268,28 @@ let app = new Vue({
       let variaciones = [...this.tot[j1].variaciones];
       let variacion_linea = [];
       let id_superior = this.id_variaciones_function (); 
-      let csv_cabecera_variaciones = [id_superior,"","variable",this.tot[j1].datos.nombre,this.tot[j1].datos.ref_fabricante,this.tot[j1].datos.p_coste,this.tot[j1].datos.pvp,"",this.tot[j1].datos.categoria,this.tot[j1].datos.fabricante,this.tot[j1].datos.imagen];
-      console.log(csv_cabecera_variaciones);
+      let csv_cabecera_variaciones = [
+        id_superior,
+        "",
+        "variable",
+        this.tot[j1].datos.nombre,
+        this.tot[j1].datos.ref_fabricante,
+        this.tot[j1].datos.p_coste,
+        this.tot[j1].datos.pvp,
+        "",
+        this.tot[j1].datos.categoria,
+        this.tot[j1].datos.fabricante,
+        this.tot[j1].datos.imagen,
+        this.tot[j1].atributo[0].nombre,
+        this.valores_atributos (0,j1),
+        1,0,
+        this.tot[j1].atributo[0].valor_defecto,
+        this.tot[j1].atributo[1].nombre,
+        this.valores_atributos (1,j1),
+        1,0,
+        this.tot[j1].atributo[1].valor_defecto
+      ];
+      console.log("csv_cabecera_variaciones",csv_cabecera_variaciones);
 
       let j2 = 0;  //%%%%javi ésto es una chapuza, el segúndo índice me lo tiene quedar el forEach
 
@@ -292,10 +313,27 @@ let app = new Vue({
         //console.log(variacion_csv)
         //console.log(csv_linea)
         // %%%% no entiendo por que me lo pasa a string el valor del stock 
-        variacion_linea = ["",variacion_csv.id,"variation",this.tot[j1].datos.nombre,this.tot[j1].datos.ref_fabricante,this.tot[j1].datos.p_coste,this.tot[j1].datos.pvp,Number(this.tot[j1].variaciones[j2].stock),this.tot[j1].datos.categoria,this.tot[j1].datos.fabricante,this.tot[j1].datos.imagen]; 
+        variacion_linea = [
+          "",
+          variacion_csv.id,
+          "variation",
+          this.tot[j1].datos.nombre,
+          this.tot[j1].datos.ref_fabricante,
+          this.tot[j1].datos.p_coste,
+          this.tot[j1].datos.pvp,
+          Number(this.tot[j1].variaciones[j2].stock),
+          this.tot[j1].datos.categoria,
+          this.tot[j1].datos.fabricante,
+          this.tot[j1].datos.imagen,
+          this.tot[j1].atributo[0].nombre,
+          this.tot[j1].variaciones[j2].b,
+          "",0,"",
+          this.tot[j1].atributo[1].nombre,
+          this.tot[j1].variaciones[j2].a,
+          "",0,""]; 
         j2 = j2 + 1 // javi súmele uno con += o como vaya
         //variacion_csv.nombre, variacion_csv.costo, variacion_csv.precio_normal,variacion_csv.categorias];
-        console.log(variacion_linea)
+        console.log("variacion_linea: ",variacion_linea)
         csv_linea.push(variacion_linea) //  tunealo para ésta función
       });
       //this.tot[j1].csv = [...csv_linea]
@@ -308,7 +346,25 @@ let app = new Vue({
       this.id_variaciones = this.id_variaciones +1
       return n
     },
-    
+    valores_atributos (n,j1){
+      let valores = [...this.tot[j1].atributo[n].valores];
+      let seleccion_valores =[];
+
+      console.log(valores);
+      //return ("valores_atributos")
+      let lista_valores = [];
+      valores.forEach(atributos =>{        
+        let valor = {
+          a: atributos.valor
+        };
+        console.log("valores:")
+        //console.log(valores[0]);
+        console.log(valor);
+        seleccion_valores.push(valor.a) 
+      })
+      console.log("seleccion_valores: ",seleccion_valores.toString());
+      return seleccion_valores.toString()
+    },
     encajar_atributo_y_foco(j1,j2,j3){
       this.encajar_atributo (j1,j2,j3)
 
