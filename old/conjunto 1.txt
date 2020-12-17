@@ -1,0 +1,19 @@
+ "ID", "superior", "tipo", "Nombre", "ref_fabicante", "costo", "precio_normal", "inventario", "categorias", "fabricante", "imagenes", "Nombre del atributo 1", "valores del atributo 1", "Atributo visible 1", "atributo global 1", "Valor defecto 1", "Nombre del atributo 2", "valores del atributo 2", "Atributo visible 2", "atributo global 2", "Valor defecto 2"
+
+ 5014, "", "variable", "Jersey 2116", "", "9,9", "24,9", "", "pendiente", "", "", "color", "negro,gris,hueso", 1, 0, "negro", "talla", "UNICA", 1, 0, "UNICA"
+ 5015, 5014, "variation", "Jersey 2116", "", "9,9", "24,9", 2, "pendiente", "", "", "color", "negro", "", 0, "", "talla", "UNICA", "", 0, ""
+ 5016, 5014, "variation", "Jersey 2116", "", "9,9", "24,9", 1, "pendiente", "", "", "color", "gris", "", 0, "", "talla", "UNICA", "", 0, ""
+ 5017, 5014, "variation", "Jersey 2116", "", "9,9", "24,9", 1, "pendiente", "", "", "color", "hueso", "", 0, "", "talla", "UNICA", "", 0, ""
+
+ 5009, "", "variable", "camisa 0026", "", "9,90", "24,90", "", "pendiente", "", "", "talla", "UNICA", 1, 0, "UNICA", "color", "blanco,crema,marron", 1, 0, ""
+ 5010, 5009, "variation", "camisa 0026", "", "9,90", "24,90", 1, "pendiente", "", "", "talla", "UNICA", "", 0, "", "color", "blanco", "", 0, ""
+ 5011, 5009, "variation", "camisa 0026", "", "9,90", "24,90", 1, "pendiente", "", "", "talla", "UNICA", "", 0, "", "color", "crema", "", 0, ""
+ 5012, 5009, "variation", "camisa 0026", "", "9,90", "24,90", 2, "pendiente", "", "", "talla", "UNICA", "", 0, "", "color", "marron", "", 0, ""
+
+ 5003, "", "variable", "vestido adore brillo 20713", "", "11,90", "29,90", "", "pendiente", "", "", "talla", "UNICA", 1, 0, "UNICA", "color", "negro", 1, 0, "negro"
+ 5004, 5003, "variation", "vestido adore brillo 20713", "", "11,90", "29,90", 2, "pendiente", "", "", "talla", "UNICA", "", 0, "", "color", "negro", "", 0, ""
+
+ 5000, "", "variable", "vestido 6506", "", "7,90", "19,90", "", "pendiente", "", "", "talla", "UNICA", 1, 0, "UNICA", "color", "negro,gris", 1, 0, ""
+ 5001, 5000, "variation", "vestido 6506", "", "7,90", "19,90", 2, "pendiente", "", "", "talla", "UNICA", "", 0, "", "color", "negro", "", 0, ""
+ 5002, 5000, "variation", "vestido 6506", "", "7,90", "19,90", 1, "pendiente", "", "", "talla", "UNICA", "", 0, "", "color", "gris", "", 0, ""
+

@@ -342,11 +342,26 @@ let app = new Vue({
       });
       //this.tot[j1].csv = [...csv_linea]
       this.tot[j1].csv = this.tot[j1].csv.concat(csv_linea);
-      this.tot[j1].csv = this.csv_cabecera.concat(this.tot[j1].csv);
+      //this.tot[j1].csv = this.csv_cabecera.concat(this.tot[j1].csv);
       console.log("Ésto es todo colega: ",this.tot[j1].csv);
-
+      this.csv_conjunto()
     },
-    
+    csv_conjunto(){
+      console.log("inicio csv_conjunto")
+      extrayendo_csv = this.tot;
+      csv_extraido = ["hola",];
+        extrayendo_csv.forEach(articulo => {
+          let a = articulo
+          console.log("a")
+          //console.log(articulo.csv)
+          console.log(a)
+          console.log("b")
+          extrayendo_csv.push(articulo.csv)
+        });
+        csv_extraido = this.csv_cabecera.concat(csv_extraido)
+        console.log(csv_extraido)
+        console.log("fin csv_conjunto")
+    },
     id_variaciones_function (){
       let n = this.id_variaciones
       this.id_variaciones = this.id_variaciones +1

@@ -1,0 +1,1 @@
+ "ID", "superior", "tipo", "Nombre", "ref_fabicante", "costo", "precio_normal", "inventario", "categorias", "fabricante", "imagenes", "Nombre del atributo 1", "valores del atributo 1", "Atributo visible 1", "atributo global 1", "Valor defecto 1", "Nombre del atributo 2", "valores del atributo 2", "Atributo visible 2", "atributo global 2", "Valor defecto 2"
