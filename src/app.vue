@@ -9,7 +9,7 @@
     p Prueba:
     p _
     
-    button(v-on:click="generarCSV(tot)" ) Prueba 
+    button(v-on:click="prueba_csv()" ) Prueba 
 
     p Borrar:
     p _
@@ -23,50 +23,50 @@
     button(v-on:click="delete_articulo(j1)" v-if="borrar && tot[j1].visible"
     class="backgroundRed") &times delete_articulo
     
-    label(v-bind:for="tot[j1].id.nombre") Nombre
+    label() Nombre
     input( v-model="tot[j1].datos.nombre" 
-    v-bind:id="tot[j1].id.nombre"
+    
     placeholder="nombre"
-    v-on:keyup.enter="moverFoco3(tot[j1].id.ref_fabricante)")
+    )
     p
-    label(v-bind:for="tot[j1].id.ref_fabricante" v-if="tot[j1].visible") ref_fabricante 
+    label( v-if="tot[j1].visible") ref_fabricante 
     input( v-model="tot[j1].datos.ref_fabricante" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.ref_fabricante"   placeholder="ref_fabricante"
-    v-on:keyup.enter="moverFoco3(tot[j1].id.pvp)")
+       placeholder="ref_fabricante"
+    )
     p
-    label(v-bind:for="tot[j1].id.pvp" v-if="tot[j1].visible") pvp
+    label( v-if="tot[j1].visible") pvp
     input( v-model="tot[j1].datos.pvp" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.pvp" placeholder="pvp" 
-    v-on:keyup.enter="moverFoco3(tot[j1].id.p_coste)")
+     placeholder="pvp" 
+    )
     p
-    label(v-bind:for="tot[j1].id.p_coste" v-if="tot[j1].visible") p_coste
+    label( v-if="tot[j1].visible") p_coste
     input( v-model="tot[j1].datos.p_coste" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.p_coste" placeholder="p_coste" 
-    v-on:keyup.enter="moverFoco3(tot[j1].id.fabricante)")
+     placeholder="p_coste" 
+    )
     p
-    label(v-bind:for="tot[j1].id.fabricante" v-if="tot[j1].visible") fabricante
+    label( v-if="tot[j1].visible") fabricante
     input( v-model="tot[j1].datos.fabricante" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.fabricante" placeholder="fabricante"
-    v-on:keyup.enter="moverFoco3(tot[j1].id.descripcion)")
+     placeholder="fabricante"
+    )
     p
-    label(v-bind:for="tot[j1].id.descripcion" v-if="tot[j1].visible") descripcion
+    label( v-if="tot[j1].visible") descripcion
     input( v-model="tot[j1].datos.descripcion" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.descripcion" placeholder="descripcion"
-    v-on:keyup.enter="moverFoco3(tot[j1].id.categoria)")
+     placeholder="descripcion"
+    )
     p
-    label(v-bind:for="tot[j1].id.categoria" v-if="tot[j1].visible") categoria
+    label( v-if="tot[j1].visible") categoria
     input( v-model="tot[j1].datos.categoria" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.categoria" placeholder="categoria"
-    v-on:keyup.enter="moverFoco3(tot[j1].id.imagen)")
+     placeholder="categoria"
+    )
     p
-    label(v-bind:for="tot[j1].id.imagen" v-if="tot[j1].visible") imagen
+    label( v-if="tot[j1].visible") imagen
     input( v-model="tot[j1].datos.imagen" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.imagen" placeholder="imagen" 
-    v-on:keyup.enter="moverFoco3(tot[j1].id.visible)")
+     placeholder="imagen" 
+    )
     p
-    label(v-bind:for="tot[j1].id.visible" v-if="tot[j1].visible") visible
+    label( v-if="tot[j1].visible") visible
     input( v-model="tot[j1].datos.visible" v-if="tot[j1].visible"
-    v-bind:id="tot[j1].id.visible" placeholder="visible")
+     placeholder="visible")
     
     
     p
@@ -312,7 +312,7 @@
 import axios from "axios";
 
 export default {
-  name: 'App',
+  name: 'app',
   data: () => ({
     
         tot: [],
@@ -573,6 +573,23 @@ methods: {
         console.log("atributo")
         console.log(this.tot[j1].atributo[0].visible)
       },
+
+      prueba_csv()
+      {
+        
+        let csv_final = [];
+        csv_final.push(...this.csv_cabecera);
+
+        this.tot.forEach(articulo => {
+          
+          csv_final.push(...articulo.csv);
+          
+        });
+        
+        
+        console.log(csv_final);
+        this.generarCSV(csv_final);
+      },
        
       crear_csv(i,j1){
         console.log(this.csv_cabecera);
@@ -585,7 +602,7 @@ methods: {
           id_superior,
           "",
           "variable",
-          this.tot[j1].datos.nombre,
+          this.tot[j1].datos.nombre,  //### cuidado con quitar el nombre
           this.tot[j1].datos.ref_fabricante,
           this.tot[j1].datos.p_coste,
           this.tot[j1].datos.pvp,
@@ -636,7 +653,8 @@ methods: {
             variacion_csv.id,
             id_superior,
             "variation",
-            this.tot[j1].datos.nombre,
+            this.tot[j1].datos.nombre,  //##
+        
             this.tot[j1].datos.ref_fabricante,
             this.tot[j1].datos.p_coste,
             this.tot[j1].datos.pvp,
@@ -661,7 +679,7 @@ methods: {
         this.tot[j1].csv = this.tot[j1].csv.concat(csv_linea);
         //this.tot[j1].csv = this.csv_cabecera.concat(this.tot[j1].csv);
         console.log("Ésto es todo colega: ",this.tot[j1].csv);
-        this.csv_conjunto()
+        //this.csv_conjunto()
       },
       csv_conjunto(){
         console.log("inicio csv_conjunto")
@@ -717,29 +735,9 @@ methods: {
   //no te compliques de momento       document.querySelector(`#${this.tot[j1].atributo[j2].valores[n3].id}`).focus()
         
       },    
-      moverFoco(name, j1,i){
-        console.log(name, i)
-        console.log(this.tot[j1].id.ref_fabricante)
-        //document.querySelector(`#${this.tot[j1].focus[2+1]}`).focus()
-        //document.querySelector(`#${this.tot[j1].id.ref_fabricante}`).focus()
-       //document.querySelector("ref_fabricante").focus()
-       document.querySelector(`#${"ref_fabricante"}`).focus() 
-      },
-      moverFoco2(name, j1){
-        console.log(name, j1)
-        console.log(typeof (name))
-        
-       //document.querySelector(`#${'name'}`).focus()
-        //document.querySelector(`#${"0p_coste"}`).focus()
-        //document.querySelector(`#${"ref_fabricante"}`).focus() 
-        document.querySelector(`#${"p_coste0"}`).focus()
-      },
-      moverFoco3(name){
-        console.log("estoy en MoverFoco3")
-        console.log(name)
-        console.log(typeof (name))
-        document.querySelector(`#${name}`).focus()
-      },
+      
+      
+      
       concatenando(){
         //csv_cabecera_variaciones.concat(csv_cabecera_variaciones).concat(csv_linea)
       },
@@ -754,6 +752,7 @@ methods: {
           console.log(result.data);
         })
       },
+
 
     },
 }
