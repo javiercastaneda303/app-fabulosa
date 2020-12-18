@@ -1,10 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    //res.render('insersionArticulos', {}); //vue
-    res.send("Prueba express");
-});
+
+router.use('/', express.static('public'));
 
 router.post('/insertar', function(req, res, next) {
     //res.render('insersionArticulos', {}); //vue

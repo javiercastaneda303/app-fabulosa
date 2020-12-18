@@ -17,3 +17,8 @@ primer_csv_ r-n.csv
 primer_csv.csv
 
 node_modules/
+src/dist/
+src/node_modules/
+
+
+package-lock.json
