@@ -6,10 +6,15 @@
       
   .anchoTotal(v-for="(i, j1) in tot")
     input(type="checkbox", v-model="borrar") 
+    p Prueba:
+    p _
+    
+    button(v-on:click="generarCSV(tot)" ) Prueba 
+
     p Borrar:
     p _
     
-    button(v-on:click="concatenando()" ) concatenando 
+    button(v-on:click="concatenando()" ) concatenando 2
     p _ {{i.csv}} 
     button(v-on:click="n_articulo()" ) Nuevo Artículo 
     p ---j1:{{j1}} -&&- {{i}}
@@ -304,6 +309,7 @@
 </template>
 
 <script>
+import axios from "axios";
 
 export default {
   name: 'App',
@@ -672,6 +678,9 @@ methods: {
           csv_extraido = this.csv_cabecera.concat(csv_extraido)
           console.log(csv_extraido)
           console.log("fin csv_conjunto")
+
+       
+
       },
       id_variaciones_function (){
         let n = this.id_variaciones
@@ -739,7 +748,13 @@ methods: {
       },
       addItem() {
 
-      }
+      },
+      generarCSV(obj) {
+        axios.post("/generarCSV", obj).then((result) => {
+          console.log(result.data);
+        })
+      },
+
     },
 }
 </script>
