@@ -30,7 +30,7 @@ router.post('/generarCSV',jsonParser, asyncMiddleware(async (req, res, next) => 
     var body = req.body;
     console.log(body);
 
-    var insertarDB = () => (
+   /* var insertarDB = () => (
         new Promise(async (resolve, reject) => {
            
             try {
@@ -51,10 +51,10 @@ router.post('/generarCSV',jsonParser, asyncMiddleware(async (req, res, next) => 
         })
     );
 
-    await insertarDB();
+    await insertarDB();*/
 
 
-    res.send(body);
+    res.redirect('/imprimir');
 
 }));
 

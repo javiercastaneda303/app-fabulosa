@@ -19,6 +19,7 @@ app.set(bodyParser.urlencoded({extended : true}));
 
 var routes = require('./routes');
 app.use('/', routes);
+app.use('/imprimir', express.static('public/codigo_barra'));
 
 
 var server = app.listen(port,function(err)

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codigo de barra</title>
+</head>
+<body>
+
+    <div id="codigo-barra"></div>
+
+    <input type="number" id="numeros">
+    <button onclick="generarCodigo()">generar</button>
+
+    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="barcode-jquery-master/jquery-barcode.min.js"></script>
+    <script>
+
+        // Genera el codigo de barra cuando se presiona Crtl + p
+        jQuery(document).bind("keyup keydown", function(e){
+            if(e.ctrlKey && e.keyCode == 80){
+                e.preventDefault();
+                generarCodigo();
+            }
+        });
+
+        function generarCodigo() {
+            $("#codigo-barra").barcode("1334713354","code39");
+        }
+
+    </script>
+</body>
+</html>
